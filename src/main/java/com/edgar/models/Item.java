@@ -3,6 +3,7 @@ package com.edgar.models;
 import java.math.BigDecimal;
 
 import com.edgar.models.enums.ItemType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +27,11 @@ public class Item {
 	@Column(name = "ITEM_ID")
 	private Long id;
 	
+	@Column(name ="ITEM_NAME")
+	private String name;
+	
 	@ManyToOne
+	@JsonIgnore
 	private Order order;
 	
 	@Column(name ="ITEM_QUANTITY")
