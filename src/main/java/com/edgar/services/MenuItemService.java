@@ -8,39 +8,39 @@ import org.springframework.stereotype.Service;
 
 import com.edgar.exceptions.ItemAlreadyExistsException;
 import com.edgar.exceptions.ItemDoesNotExistException;
-import com.edgar.models.Item;
-import com.edgar.repositories.ItemRepository;
+import com.edgar.models.MenuItem;
+import com.edgar.repositories.MenuItemRepository;
 
 @Service
-public class ItemService {
+public class MenuItemService {
 
 	@Autowired
-	private ItemRepository itemRepository;
+	private MenuItemRepository menuitemRepository;
 
-	/* Create new item */
-	public Item addNewMenuItem(Item item) {
-		if (!isExists(item.getName())) {
-			return itemRepository.save(item);
+	/* Create new menu item */
+	public MenuItem addNewMenuItem(MenuItem item) {
+		if (!isExists(item.getMenuItemName())) {
+			return menuitemRepository.save(item);
 		}
 
 		else
-			throw new ItemAlreadyExistsException("An item with given name " + item.getName() + "already exists");
+			throw new ItemAlreadyExistsException("An item with given name " + item.getMenuItemName() + "already exists");
 
 	}
 
 	/* Get one item by name */
-	public Optional<Item> getMenuItem(String name) {
+	public Optional<MenuItem> getMenuItem(String name) {
 		if (isExists(name)) {
-			return itemRepository.findByName(name);
+			return menuitemRepository.findByName(name);
 		} else
 			throw new ItemDoesNotExistException("No such item with given name  ::'" + name + "' does not exist");
 
 	}
 	
 	/* Get one item by id */
-	public Optional<Item> getMenuItem(Long id) {
+	public Optional<MenuItem> getMenuItem(Long id) {
 		if (isExists(id)) {
-			return itemRepository.findById(id);
+			return menuitemRepository.findById(id);
 		} else
 			throw new ItemDoesNotExistException("No such item with given name  ::'" + id + "' does not exist");
 
@@ -48,8 +48,8 @@ public class ItemService {
 	
 	
 	/* Get all menu items */
-	public List<Item> getMenuItems(){
-		return itemRepository.findAll();
+	public List<MenuItem> getMenuItems(){
+		return menuitemRepository.findAll();
 	}
 	
 	
@@ -75,13 +75,13 @@ public class ItemService {
 
 	// name
 	public boolean isExists(String name) {
-		return itemRepository.existsByName(name) ? true : false;
+		return menuitemRepository.existsByName(name) ? true : false;
 
 	}
 
 	// id
 	public boolean isExists(Long id) {
-		return itemRepository.existsById(id) ? true : false;
+		return menuitemRepository.existsById(id) ? true : false;
 
 	}
 

@@ -47,6 +47,6 @@ public class Order {
 	
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "order", orphanRemoval = true)
-	private Set<Item> items;
+	private Set<ItemOrdered> itemsOrdered;
 
 }

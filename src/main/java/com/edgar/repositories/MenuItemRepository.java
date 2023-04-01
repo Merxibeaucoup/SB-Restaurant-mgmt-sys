@@ -4,13 +4,13 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.edgar.models.Item;
+import com.edgar.models.MenuItem;
 
 
-public interface ItemRepository  extends JpaRepository<Item, Long>{
+public interface MenuItemRepository  extends JpaRepository<MenuItem, Long>{
 	
 	
-	Optional<Item> findByName(String name);
+	Optional<MenuItem> findByName(String name);
 	
 	boolean existsByName(String name);
 
