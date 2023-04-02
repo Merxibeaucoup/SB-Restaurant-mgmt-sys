@@ -29,7 +29,7 @@ public class MenuItemService {
 	}
 
 	/* Get one item by name */
-	public Optional<MenuItem> getMenuItem(String name) {
+	public Optional<MenuItem> getMenuItemByName(String name) {
 		if (isExists(name)) {
 			return menuitemRepository.findByName(name);
 		} else
@@ -38,13 +38,15 @@ public class MenuItemService {
 	}
 	
 	/* Get one item by id */
-	public Optional<MenuItem> getMenuItem(Long id) {
+	public Optional<MenuItem> getMenuItemById(Long id) {
 		if (isExists(id)) {
 			return menuitemRepository.findById(id);
 		} else
 			throw new ItemDoesNotExistException("No such item with given name  ::'" + id + "' does not exist");
 
 	}
+	
+	
 	
 	
 	/* Get all menu items */
