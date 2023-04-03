@@ -1,5 +1,7 @@
 package com.edgar.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,13 +22,15 @@ public class ItemOrdered {
 	@Column(name = "OREDERED_ITEM_ID")
 	private Long id;
 	
-	
 	@ManyToOne
+	@JsonIgnore
 	private Order order;
 	
 	@Column(name ="ORDERED_ITEM_QUANTITY")
 	private Long quantity;
 	
+	
+	@ManyToOne
 	private MenuItem menuItem;
 	
 	
